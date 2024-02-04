@@ -4,6 +4,9 @@
 
 #include "mainwindow.h"
 
+#include <QQuickWidget>
+#include <QLayout>
+#include <QAbstractTextDocumentLayout>
 #include <QtCore/QDebug>
 #include <QtCore/QFile>
 #include <QtCore/QTime>
@@ -39,20 +42,48 @@ protected:
     }
 };
 
+
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     installWindowAgent();
 
-    auto clockWidget = new ClockWidget();
+    /*auto clockWidget = new ClockWidget();
     clockWidget->setObjectName(QStringLiteral("clock-widget"));
     clockWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    setCentralWidget(clockWidget);
+    setCentralWidget(clockWidget);*/
 
+    /*QWidget *btn = new QWidget(this);
+    btn->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    QQuickWidget *view = new QQuickWidget(this);
+    view->setSource(QUrl::fromLocalFile("a.qml"));
+    view->setObjectName(QStringLiteral("clock-widget"));
+    view->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    btn->layout()->addWidget(view);
+    QPushButton *btn2 = new QPushButton(this);
+    btn2->setText("hello");
+    btn->layout()->addWidget(btn2);
+    setCentralWidget(btn);*/
+
+    QWidget *window = new QWidget(this);
+    //QVBoxLayout *layout = new QVBoxLayout(window);
+    QQuickWidget *view = new QQuickWidget(this);
+    view->setSource(QUrl(QStringLiteral("qrc:///a.qml")));
+    view->setObjectName(QStringLiteral("clock-widget"));
+    auto qmlsize = view->initialSize();
+    view->setResizeMode(QQuickWidget::SizeRootObjectToView);
+    auto resizemode = view->resizeMode();
+    //layout->addWidget(view);
+    setCentralWidget(view);
     loadStyleSheet(Dark);
 
     setWindowTitle(tr("Example MainWindow"));
     resize(800, 600);
-
     windowAgent->centralize();
+    auto h = this->height();
+    auto w = this->width();
+    
+   
+    int i = 1;
 }
 
 static inline void emulateLeaveEvent(QWidget *widget) {
@@ -340,6 +371,7 @@ void MainWindow::installWindowAgent() {
     });
     connect(windowBar, &QWK::WindowBar::closeRequested, this, &QWidget::close);
 #endif
+    
 }
 
 void MainWindow::loadStyleSheet(Theme theme) {

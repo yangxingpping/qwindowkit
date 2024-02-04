@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 #include <QtWidgets/QApplication>
+#include <QtWebEngineQuick>
 
 #include "mainwindow.h"
 
@@ -18,8 +19,9 @@ int main(int argc, char *argv[]) {
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(
         Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
 #endif
-
+    QtWebEngineQuick::initialize();
     QApplication a(argc, argv);
+    
 
 #if 0 && defined(Q_OS_WINDOWS) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QApplication::setFont([]() {

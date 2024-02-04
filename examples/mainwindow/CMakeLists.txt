@@ -2,9 +2,11 @@ project(QWKExample_MainWindow)
 
 file(GLOB _src *.h *.cpp)
 
+find_package(Qt6 REQUIRED COMPONENTS WebEngineQuick QuickWidgets)
+
 qwk_add_example(${PROJECT_NAME}
     SOURCES ${_src} mainwindow.qrc ../shared/resources/shared.qrc
-    QT_LINKS Core Gui Widgets
+    QT_LINKS Core Gui Widgets WebEngineQuick QuickWidgets
     LINKS QWKWidgets WidgetFrame
 )
 
