@@ -93,6 +93,9 @@ CMakeSettings.json
 /data
 /*.natvis
 
+/build/
+/build_win/
+
 *.sublime-*
 setup-vcpkg.json
 setup-vcpkg-temp*

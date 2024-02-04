@@ -16,6 +16,7 @@ add_subdirectory(shared)
 
 if(QWINDOWKIT_BUILD_WIDGETS)
     add_subdirectory(mainwindow)
+    add_subdirectory(widgetWithQuick)
 endif()
 
 if(QWINDOWKIT_BUILD_QUICK)
