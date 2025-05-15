@@ -8,9 +8,10 @@ Form::Form(QWidget *parent)
     ui->setupUi(this);
     auto e = KTextEditor::Editor::instance();
     auto doc = e->createDocument(nullptr);
-    /*auto v = doc->createView(ui->widget);
+    auto v = doc->createView(ui->widget);
     v->setBlockSelection(true);
-    v->setContextMenu(v->defaultContextMenu());*/
+    v->setContextMenu(v->defaultContextMenu());
+    v->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 }
 
 Form::~Form()

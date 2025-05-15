@@ -59,7 +59,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     resize(800, 600);
     auto h = menuWidget()->height();
     m_ui->resize(800, 570);
-
+    int i{0};
 }
 
 static inline void emulateLeaveEvent(QWidget *widget) {
