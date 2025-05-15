@@ -31,6 +31,9 @@ moc_*.cpp
 ui_*.h
 qrc_*.cpp
 Thumbs.db
+
+/build_win/
+
 # *.res
 # *.rc
 /.qmake.cache

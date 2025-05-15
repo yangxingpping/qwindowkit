@@ -83,6 +83,18 @@ set(QACTIONKIT_DESCRIPTION ${PROJECT_DESCRIPTION})
 # ----------------------------------
 find_package(qmsetup QUIET)
 
+# add kde libraries
+find_package(KF6Archive  REQUIRED)
+find_package(KF6Config  REQUIRED)
+find_package(KF6GuiAddons  REQUIRED)
+find_package(KF6I18n  REQUIRED)
+find_package(KF6KIO  REQUIRED)
+find_package(KF6Parts REQUIRED)
+find_package(KF6Sonnet  REQUIRED)
+find_package(KF6SyntaxHighlighting REQUIRED)
+find_package(KF6TextEditor REQUIRED)
+# end kde libraries
+
 if(NOT TARGET qmsetup::library)
     # Modify this variable according to your project structure
     set(_source_dir ${CMAKE_CURRENT_SOURCE_DIR}/qmsetup)
