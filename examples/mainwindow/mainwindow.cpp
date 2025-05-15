@@ -21,10 +21,13 @@
 
 // #include <QtWebEngineWidgets/QWebEngineView>
 
+#include <ui_form.h>
 #include <QWKWidgets/widgetwindowagent.h>
 
 #include <widgetframe/windowbar.h>
 #include <widgetframe/windowbutton.h>
+
+#include "form.h"
 
 class ClockWidget : public QLabel {
 public:
@@ -47,10 +50,16 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     installWindowAgent();
 
-    auto clockWidget = new ClockWidget();
+    auto w = new QWidget(this);
+    w->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    m_ui = new Form(w);
+    setCentralWidget(w);
+    m_ui->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+    /*auto clockWidget = new ClockWidget();
     clockWidget->setObjectName(QStringLiteral("clock-widget"));
     clockWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    setCentralWidget(clockWidget);
+    setCentralWidget(clockWidget);*/
 
     loadStyleSheet(Dark);
 
