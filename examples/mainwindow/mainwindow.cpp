@@ -47,24 +47,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     installWindowAgent();
 
-#if 1
     auto clockWidget = new ClockWidget();
     clockWidget->setObjectName(QStringLiteral("clock-widget"));
     clockWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     setCentralWidget(clockWidget);
-#else
-    auto webView = new QWebEngineView();
-    webView->load(QUrl("https://www.baidu.com"));
-    setCentralWidget(webView);
-#endif
 
     loadStyleSheet(Dark);
 
     setWindowTitle(tr("Example MainWindow"));
     resize(800, 600);
-
-    // setFixedHeight(600);
-    // windowAgent->centralize();
 }
 
 static inline void emulateLeaveEvent(QWidget *widget) {

@@ -7,6 +7,8 @@
 
 #include <QtWidgets/QMainWindow>
 
+#include "form.h"
+
 namespace QWK {
     class WidgetWindowAgent;
     class StyleAgent;
@@ -37,6 +39,8 @@ private:
     Theme currentTheme{};
 
     QWK::WidgetWindowAgent *windowAgent;
+
+    Form *m_ui{nullptr};
 };
 
 #endif // MAINWINDOW_H
