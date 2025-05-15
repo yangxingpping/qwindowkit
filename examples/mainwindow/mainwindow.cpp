@@ -54,10 +54,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     setCentralWidget(w);
     m_ui->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     loadStyleSheet(Dark);
-
     setWindowTitle(tr("Example MainWindow"));
-    m_ui->resize(800, 550);
+    //m_ui->resize(800, 570);
     resize(800, 600);
+    auto h = menuWidget()->height();
+    m_ui->resize(800, 570);
+
 }
 
 static inline void emulateLeaveEvent(QWidget *widget) {
@@ -98,7 +100,8 @@ static inline void emulateLeaveEvent(QWidget *widget) {
 
 MainWindow::~MainWindow() = default;
 
-bool MainWindow::event(QEvent *event) {
+bool MainWindow::event(QEvent *event)
+{
     switch (event->type()) {
         case QEvent::WindowActivate: {
             auto menu = menuWidget();
@@ -122,6 +125,19 @@ bool MainWindow::event(QEvent *event) {
             break;
     }
     return QMainWindow::event(event);
+}
+
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    QMainWindow::resizeEvent(event);
+    auto oldSize = event->oldSize();
+    auto newSize = event->size();
+    auto sz = event->size();
+    auto h = menuWidget()->height();
+    auto w = menuWidget()->width();
+    m_ui->resize(w, sz.height()-h);
+    m_ui->update();
+    qDebug() << "Window resized from" << oldSize << "to" << newSize;
 }
 
 void MainWindow::installWindowAgent() {
