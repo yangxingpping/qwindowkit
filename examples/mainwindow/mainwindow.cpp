@@ -47,23 +47,16 @@ protected:
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     setAttribute(Qt::WA_DontCreateNativeAncestors);
-
     installWindowAgent();
-
     auto w = new QWidget(this);
     w->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     m_ui = new Form(w);
     setCentralWidget(w);
     m_ui->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
-    /*auto clockWidget = new ClockWidget();
-    clockWidget->setObjectName(QStringLiteral("clock-widget"));
-    clockWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    setCentralWidget(clockWidget);*/
-
     loadStyleSheet(Dark);
 
     setWindowTitle(tr("Example MainWindow"));
+    m_ui->resize(800, 550);
     resize(800, 600);
 }
 
