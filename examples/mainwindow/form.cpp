@@ -9,6 +9,12 @@ Form::Form(QWidget *parent)
     auto e = KTextEditor::Editor::instance();
     auto doc = e->createDocument(nullptr);
     auto v = doc->createView(ui->widget);
+
+    QVBoxLayout *layout = new QVBoxLayout(ui->widget);
+    layout->setContentsMargins(0, 0, 0, 0);
+    layout->addWidget(v, 1); 
+    ui->widget->setLayout(layout);
+
     v->setBlockSelection(true);
     v->setContextMenu(v->defaultContextMenu());
     v->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
