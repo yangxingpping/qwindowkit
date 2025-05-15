@@ -2,6 +2,11 @@
 #define FORM_H
 
 #include <QWidget>
+#include "ktexteditor/Document"
+#include <KTextEditor/Document>
+#include <KTextEditor/Editor>
+#include <KTextEditor/View>
+#include <KTextEditor/mainwindow.h>
 
 namespace Ui {
 class Form;
