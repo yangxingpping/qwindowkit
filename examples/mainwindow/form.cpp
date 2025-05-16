@@ -10,6 +10,9 @@ Form::Form(QWidget *parent)
     auto doc = e->createDocument(nullptr);
     auto v = doc->createView(ui->widget);
 
+    ui->quickWidget->setSource(QUrl("qrc:/main.qml"));
+    ui->quickWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
+
     QVBoxLayout *layout = new QVBoxLayout(ui->widget);
     layout->setContentsMargins(0, 0, 0, 0);
     layout->addWidget(v, 1); 
